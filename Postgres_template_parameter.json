@@ -1,0 +1,140 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "serverName": {
+            "value": "pgsflex09"
+        },
+        "serverEdition": {
+            "value": "GeneralPurpose"
+        },
+        "storageSizeMB": {
+            "value": 131072
+        },
+        "haEnabled": {
+            "value": "Enabled"
+        },
+        "tags": {
+            "value": {
+                "Type": "PostgresPassFlex"
+            }
+        },
+        "firewallRules": {
+            "value": {
+                "rules": []
+            }
+        },
+        "vnetData": {
+            "value": {
+                "virtualNetworkName": "dbvnet",
+                "virtualNetworkId": "/subscriptions/64f6778a-d2fd-42d6-a89a-aa482f64f57a/resourceGroups/sudRG1/providers/Microsoft.Network/virtualNetworks/dbvnet",
+                "subnetName": "default",
+                "virtualNetworkSubscriptionName": "SudhakarPillaiInternal1",
+                "virtualNetworkAddressPrefix": "10.0.0.0/16",
+                "virtualNetworkResourceGroupName": "sudRG1",
+                "location": "eastus",
+                "subscriptionId": "64f6778a-d2fd-42d6-a89a-aa482f64f57a",
+                "subnetProperties": {
+                    "provisioningState": "Succeeded",
+                    "addressPrefix": "10.0.0.0/24",
+                    "serviceAssociationLinks": [
+                        {
+                            "name": "default-service-association-link",
+                            "id": "/subscriptions/64f6778a-d2fd-42d6-a89a-aa482f64f57a/resourceGroups/sudRG1/providers/Microsoft.Network/virtualNetworks/dbvnet/subnets/default/serviceAssociationLinks/default-service-association-link",
+                            "etag": "W/\"17565f3b-e293-4d1b-89c4-352228c27f04\"",
+                            "type": "Microsoft.Network/virtualNetworks/subnets/serviceAssociationLinks",
+                            "properties": {
+                                "provisioningState": "Succeeded",
+                                "linkedResourceType": "Microsoft.DBforPostgreSQL/flexibleServers",
+                                "enabledForArmDeployments": true,
+                                "allowDelete": false,
+                                "locations": []
+                            }
+                        }
+                    ],
+                    "serviceEndpoints": [
+                        {
+                            "provisioningState": "Succeeded",
+                            "service": "Microsoft.Storage",
+                            "locations": [
+                                "eastus",
+                                "westus"
+                            ]
+                        }
+                    ],
+                    "delegations": [
+                        {
+                            "name": "Microsoft.DBforPostgreSQL.flexibleServers",
+                            "id": "/subscriptions/64f6778a-d2fd-42d6-a89a-aa482f64f57a/resourceGroups/sudRG1/providers/Microsoft.Network/virtualNetworks/dbvnet/subnets/default/delegations/Microsoft.DBforPostgreSQL.flexibleServers",
+                            "etag": "W/\"17565f3b-e293-4d1b-89c4-352228c27f04\"",
+                            "properties": {
+                                "provisioningState": "Succeeded",
+                                "serviceName": "Microsoft.DBforPostgreSQL/flexibleServers",
+                                "actions": [
+                                    "Microsoft.Network/virtualNetworks/subnets/join/action"
+                                ]
+                            },
+                            "type": "Microsoft.Network/virtualNetworks/subnets/delegations"
+                        }
+                    ],
+                    "privateEndpointNetworkPolicies": "Enabled",
+                    "privateLinkServiceNetworkPolicies": "Enabled"
+                },
+                "subnetNeedsUpdate": false,
+                "isNewVnet": false,
+                "delegatedSubnetArguments": {
+                    "SubnetArmResourceId": "/subscriptions/64f6778a-d2fd-42d6-a89a-aa482f64f57a/resourceGroups/sudRG1/providers/Microsoft.Network/virtualNetworks/dbvnet/subnets/default"
+                },
+                "usePrivateDnsZone": true,
+                "isNewPrivateDnsZone": true,
+                "privateDnsResourceGroup": "sudRG1",
+                "privateDnsSubscriptionId": "64f6778a-d2fd-42d6-a89a-aa482f64f57a",
+                "privateDnsZoneName": "pgsflex09.private.postgres.database.azure.com",
+                "privateDnsZoneArguments": {
+                    "PrivateDnsZoneArmResourceId": "/subscriptions/64f6778a-d2fd-42d6-a89a-aa482f64f57a/resourceGroups/sudRG1/providers/Microsoft.Network/privateDnsZones/pgsflex09.private.postgres.database.azure.com"
+                },
+                "linkVirtualNetwork": true,
+                "privateDnsZoneSubscription": "SudhakarPillaiInternal1"
+            }
+        },
+        "publicNetworkAccess": {
+            "value": "Disabled"
+        },
+        "backupRetentionDays": {
+            "value": 7
+        },
+        "geoRedundantBackup": {
+            "value": "Disabled"
+        },
+        "availabilityZone": {
+            "value": "1"
+        },
+        "vmName": {
+            "value": "Standard_D2s_v3"
+        },
+        "virtualNetworkDeploymentName": {
+            "value": "virtualNetwork_20210528T130754095Z"
+        },
+        "virtualNetworkLinkDeploymentName": {
+            "value": "virtualNetworkLink_20210528T130754095Z"
+        },
+        "privateDnsZoneDeploymentName": {
+            "value": "privateDnsZone_20210528T130754095Z"
+        },
+        "administratorLogin": {
+            "value": "sudhakar"
+        },
+        "administratorLoginPassword": {
+            "reference": {
+              "keyVault": {
+                "id": "/subscriptions/64f6778a-d2fd-42d6-a89a-aa482f64f57a/resourceGroups/sudRG1/providers/Microsoft.KeyVault/vaults/sudpg1vault"
+              },
+              "secretName": "dbadminpw"
+            }
+          },
+          "location":{"value": "eastus"},
+        "version": {
+            "value": "12"
+        }
+    }
+}
